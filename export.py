@@ -1,6 +1,7 @@
 import csv
 
 def export_csv(transactions: list[dict], file: str) -> None:
+
     if not transactions:
         return
     

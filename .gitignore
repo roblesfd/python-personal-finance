@@ -3,3 +3,5 @@ Planeacion.txt
 __pycache__/
 funcionalidades.txt
 venv/
+*.json
+*.csv

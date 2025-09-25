@@ -3,8 +3,9 @@ from datetime import datetime
 from tabulate import tabulate
 
 from models import Movimiento
+from logger import log_call
 
-
+@log_call
 def add_transaction(tipo, monto, categoria, descripcion):
     data = get_transactions()
     transaction = {
@@ -18,7 +19,7 @@ def add_transaction(tipo, monto, categoria, descripcion):
     save_data(data)
     print("✅ Movimiento registrado correctamente.", transaction)
 
-
+@log_call
 def display_transactions(transactions):
     table = [
         [i + 1, t["fecha"], t["tipo"], t["monto"], t["categoria"], t["descripcion"]]
@@ -28,7 +29,7 @@ def display_transactions(transactions):
 
     print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-
+@log_call
 def get_transactions():
     transactions = load_data()
     if not transactions:
@@ -36,7 +37,7 @@ def get_transactions():
         return
     return transactions
 
-
+@log_call
 def calculate_balance(transactions):
     balance = 0
 
@@ -47,15 +48,15 @@ def calculate_balance(transactions):
             balance -= t["monto"]
     return balance
 
-
+@log_call
 def filter_by_category(transactions, category):
     return [t for t in transactions if t["categoria"].lower() == category.lower()]
 
-
+@log_call
 def filter_by_type(transactions, type):
     return [t for t in transactions if t["tipo"].lower() == type.lower()]
 
-
+@log_call
 def filter_by_date(transactions, start_date, end_date):
     return [
         t for t in transactions
