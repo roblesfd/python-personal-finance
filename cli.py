@@ -4,7 +4,7 @@ from tabulate import tabulate
 
 from models import Movimiento
 from transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
-
+from export import export_csv
 
 def config_parsers():
     parser = argparse.ArgumentParser(description="CLI Finanzas Personales")
@@ -32,6 +32,10 @@ def config_subparser_report(subparsers):
     report_parser.add_argument("-t", "--tipo", type=str, help="Filtrar por tipo")
     report_parser.add_argument("-start", "--desde", type=str, help="Fecha inicio (AAAA-MM-DD)")
     report_parser.add_argument("-end", "--hasta", type=str, help="Fecha fin (AAAA-MM-DD)")
+
+
+def config_subparser_export(subparsers):
+    subparsers.add_parser("export", help="Muestra un reporte de todas las transacciones")
 
 
 def config_args(parser):
@@ -66,6 +70,9 @@ def handle_report(args):
     display_transactions(transactions)
     print(f"Balance total: {balance}")
 
+def handle_export(args):
+    transactions = get_transactions()
+    export_csv(transactions, "movimientos.csv")
 
 
 def main():
@@ -73,12 +80,14 @@ def main():
     config_subparser_add(subparsers)
     config_subparser_list(subparsers)
     config_subparser_report(subparsers)
+    config_subparser_export(subparsers)
     args = config_args(parser)
 
     commands = {
         "add": handle_add,
         "list": handle_list,
-        "report": handle_report
+        "report": handle_report,
+        "export": handle_export
     }
 
     if args.command in commands:
