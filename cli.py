@@ -3,7 +3,9 @@ from datetime import datetime
 
 from models import Movimiento
 from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
-from export import export_csv
+from export.export_csv import export_csv
+from export.export_pdf import export_to_pdf
+
 
 def config_parsers():
     parser = argparse.ArgumentParser(description="CLI Finanzas Personales")
@@ -34,7 +36,8 @@ def config_subparser_report(subparsers):
 
 
 def config_subparser_export(subparsers):
-    subparsers.add_parser("export", help="Muestra un reporte de todas las transacciones")
+    export_parser = subparsers.add_parser("export", help="Muestra un reporte de todas las transacciones")
+    export_parser.add_argument("format", type=str, choices=["csv", "pdf"], help="Tipo de formato a exportar")
 
 
 def config_args(parser):
@@ -76,9 +79,13 @@ def handle_report(args):
     display_transactions(transactions)
     print(f"Balance total: {balance}")
 
+
 def handle_export(args):
     transactions = get_transactions()
-    export_csv(transactions, "movimientos.csv")
+    if args.format == "csv":
+        export_csv(transactions, "movimientos.csv")
+    elif args.format == "pdf":
+        export_to_pdf(transactions, "movimientos.pdf")
 
 
 def main():
