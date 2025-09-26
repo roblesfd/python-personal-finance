@@ -1,9 +1,8 @@
 import argparse
 from datetime import datetime
-from tabulate import tabulate
 
 from models import Movimiento
-from transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
+from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
 from export import export_csv
 
 def config_parsers():
@@ -45,7 +44,14 @@ def config_args(parser):
 
 
 def handle_add(args):
-    add_transaction(args.tipo, args.monto, args.categoria, args.descripcion)
+    transaction = {
+        "tipo": args.tipo,
+        "monto": args.monto,
+        "categoria": args.categoria,
+        "descripcion": args.descripcion,
+        "fecha": datetime.now().isoformat()
+    }
+    add_transaction(transaction)
 
 
 def handle_list(args):
