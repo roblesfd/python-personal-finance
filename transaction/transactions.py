@@ -9,7 +9,7 @@ from logger import log_call
 def add_transaction(transaction):
     data = get_transactions()
     data.append(transaction)
-    save_data(data)
+    save_data(data, "data.json")
     print("✅ Movimiento registrado correctamente.", transaction)
 
 
@@ -19,14 +19,14 @@ def display_transactions(transactions):
         [i + 1, t["fecha"], t["tipo"], t["monto"], t["categoria"], t["descripcion"]]
         for i, t in enumerate(transactions)
     ]
-    headers = ["#", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
+    headers = ["No.", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
 
     print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 
 @log_call
 def get_transactions():
-    transactions = load_data()
+    transactions = load_data("data.json")
     if not transactions:
         print("📭 No hay movimientos registrados.")
         return

@@ -1,6 +1,6 @@
 import pytest
 
-from unittest.mock import patch, MagicMock 
+from unittest.mock import patch 
 from datetime import datetime, timedelta
 
 from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_type, filter_by_date
@@ -21,7 +21,7 @@ def test_add_transaction():
 
         add_transaction(fake_transaction)
 
-        mock_save.assert_called_once_with([fake_transaction])
+        mock_save.assert_called_once_with([fake_transaction], 'data.json')
         mock_print.assert_any_call("✅ Movimiento registrado correctamente.", fake_transaction)
 
 

@@ -2,7 +2,7 @@ from fpdf import FPDF
 from datetime import datetime
 
 
-col_widths = [10, 40, 25, 25, 40, 50] 
+col_widths = [10, 55, 20, 20, 35, 50] 
 pdf = FPDF()
 
 
@@ -24,12 +24,12 @@ def export_to_pdf(data, filename="reporte_movimientos.pdf"):
     set_table_content(data)
 
     pdf.output(filename)
-    
+
     print(f"✅ PDF generado correctamente: {filename}")
 
 
 def set_headers():
-    headers = ["#", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
+    headers = ["No.", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
     set_default_font()
 
     for i, header in enumerate(headers):
@@ -57,5 +57,5 @@ def set_table_content(data):
         pdf.ln()
 
 
-def set_default_font(style="Arial", weight="", size=12):
+def set_default_font(style="Arial", weight="", size=11):
     pdf.set_font(style, weight, size)

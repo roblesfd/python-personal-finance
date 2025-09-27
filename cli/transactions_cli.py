@@ -5,13 +5,7 @@ from models import Movimiento
 from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
 from export.export_csv import export_csv
 from export.export_pdf import export_to_pdf
-
-
-def config_parsers():
-    parser = argparse.ArgumentParser(description="CLI Finanzas Personales")
-    subparsers = parser.add_subparsers(dest="command")
-
-    return parser, subparsers
+from .base_cli import config_parsers
 
 
 def config_subparser_add(subparsers):
@@ -38,12 +32,6 @@ def config_subparser_report(subparsers):
 def config_subparser_export(subparsers):
     export_parser = subparsers.add_parser("export", help="Muestra un reporte de todas las transacciones")
     export_parser.add_argument("format", type=str, choices=["csv", "pdf"], help="Tipo de formato a exportar")
-
-
-def config_args(parser):
-    args = parser.parse_args()
-
-    return args
 
 
 def handle_add(args):
@@ -88,26 +76,3 @@ def handle_export(args):
         export_to_pdf(transactions, "movimientos.pdf")
 
 
-def main():
-    parser, subparsers = config_parsers()
-    config_subparser_add(subparsers)
-    config_subparser_list(subparsers)
-    config_subparser_report(subparsers)
-    config_subparser_export(subparsers)
-    args = config_args(parser)
-
-    commands = {
-        "add": handle_add,
-        "list": handle_list,
-        "report": handle_report,
-        "export": handle_export
-    }
-
-    if args.command in commands:
-        commands[args.command](args)
-    else:
-        parser.print_help()
-
-
-if __name__ == "__main__":
-    main()
