@@ -10,6 +10,13 @@ def add_category(category):
     if not categories:
         print("📭 No hay categorias registradas.")
         return
+    
+    if any(cat["nombre"] == category for cat in categories):
+        return
+    
+    categories.append({"nombre": category})
+    save_data(categories, "categories.json")
+
     return categories
 
 

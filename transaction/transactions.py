@@ -4,12 +4,16 @@ from tabulate import tabulate
 
 from models import Movimiento
 from logger import log_call
+from categories import add_category
 
 @log_call
 def add_transaction(transaction):
-    data = get_transactions()
-    data.append(transaction)
-    save_data(data, "data.json")
+    transactions = get_transactions()
+    transactions.append(transaction)
+
+    add_category(transaction["categoria"])
+
+    save_data(transactions, "data.json")
     print("✅ Movimiento registrado correctamente.", transaction)
 
 
