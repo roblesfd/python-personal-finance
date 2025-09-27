@@ -4,13 +4,20 @@ from categories import add_category, display_categories, get_categories, delete_
 
 
 def test_add_category_with_data():
-    fake_categories = [{"nombre": "alimentos"}, {"nombre": "Transporte"}]
+    fake_categories = [{"nombre": "transporte"}]
+    expected = [{"nombre": "transporte"}, {"nombre": "alimentos"}]
 
-    with patch("categories.load_data", return_value=fake_categories):
+    with patch("categories.load_data", return_value=fake_categories), \
+        patch("categories.save_data") as mock_save:
+
         result = add_category("alimentos")
-        assert result == fake_categories
+
+        mock_save.assert_called_once_with(expected, "categories.json")
+        assert result == expected
+
 
 def test_add_category_no_data(capsys):
+
     with patch("categories.load_data", return_value=[]):
         result = add_category("alimentos")
         captured = capsys.readouterr()

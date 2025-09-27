@@ -39,6 +39,7 @@ def get_categories():
         return
     return categories
 
+
 @log_call
 def delete_category(nombre):
     categories = load_data("categories.json")
@@ -53,7 +54,6 @@ def delete_category(nombre):
     
     updated_categories = [cat for cat in categories if cat["nombre"] != nombre]
     
-
     save_data(updated_categories, "categories.json")
     return updated_categories
     
