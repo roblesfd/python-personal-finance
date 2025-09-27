@@ -4,9 +4,10 @@ from datetime import datetime
 
 col_widths = [10, 55, 20, 20, 35, 50] 
 pdf = FPDF()
-
+DIR_PATH = "static/"
 
 def export_to_pdf(data, filename="reporte_movimientos.pdf"):
+    file_path = DIR_PATH + filename
 
     if not data:
         print("No hay movimientos para exportar.")
@@ -23,7 +24,7 @@ def export_to_pdf(data, filename="reporte_movimientos.pdf"):
     # Contenido de la tabla
     set_table_content(data)
 
-    pdf.output(filename)
+    pdf.output(file_path)
 
     print(f"✅ PDF generado correctamente: {filename}")
 
