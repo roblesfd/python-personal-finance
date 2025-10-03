@@ -2,7 +2,7 @@ from datetime import datetime
 from functools import reduce
 
 from model.models import Movimiento
-from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
+from repositories.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
 from export.export_csv import export_to_csv
 from export.export_pdf import export_to_pdf
 from .base_cli import config_parsers
