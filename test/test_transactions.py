@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import patch 
 from datetime import datetime, timedelta
 
-from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_type, filter_by_date
+from repositories.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_type, filter_by_date
 
 
 def test_add_transaction():
@@ -15,8 +15,8 @@ def test_add_transaction():
         "descripcion": "Pago mensual"
     }
 
-    with patch("transaction.transactions.get_transactions", return_value=[]), \
-        patch("transaction.transactions.save_data") as mock_save, \
+    with patch("repositories.transactions.get_transactions", return_value=[]), \
+        patch("repositories.transactions.save_data") as mock_save, \
         patch("builtins.print") as mock_print:
 
         add_transaction(fake_transaction)
@@ -40,13 +40,13 @@ def test_display_transactions():
 def test_get_transactions_with_data():
     fake_data = [{"tipo": "ingreso", "monto": 100}]
 
-    with patch("transaction.transactions.load_data", return_value=fake_data):
+    with patch("repositories.transactions.load_data", return_value=fake_data):
         result = get_transactions()
         assert result == fake_data
 
 
 def test_get_transactions_no_data():
-    with patch("transaction.transactions.load_data", return_value=[]), \
+    with patch("repositories.transactions.load_data", return_value=[]), \
          patch("builtins.print") as mock_print:
         result = get_transactions()
         assert result is None

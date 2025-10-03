@@ -1,7 +1,7 @@
-from storage import load_data, save_data
 
-from logger import log_call, log_error, log_time
+from utils.logger import log_call, log_error, log_time
 from tabulate import tabulate
+from db.storage import load_data, save_data
 
 
 @log_call

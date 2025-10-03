@@ -1,13 +1,12 @@
-import argparse
 from datetime import datetime
 from functools import reduce
 
-from models import Movimiento
+from model.models import Movimiento
 from transaction.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
 from export.export_csv import export_to_csv
 from export.export_pdf import export_to_pdf
 from .base_cli import config_parsers
-from logger import log_error, log_call
+from utils.logger import log_error, log_call
 
 
 def config_subparser_add(subparsers):

@@ -1,10 +1,11 @@
-from storage import load_data, save_data
 from datetime import datetime
 from tabulate import tabulate
 
-from models import Movimiento
-from logger import log_call, log_error, log_time
-from categories import add_category
+from model.models import Movimiento
+from utils.logger import log_call, log_error, log_time
+from repositories.categories import add_category
+from db.storage import load_data, save_data
+
 
 @log_call
 @log_error

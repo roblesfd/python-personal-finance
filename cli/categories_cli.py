@@ -1,9 +1,6 @@
-import argparse
 from datetime import datetime
 
-from categories import add_category, display_categories, get_categories, delete_category
-from .base_cli import config_parsers
-from logger import log_error, log_call
+from repositories.categories import add_category, display_categories, get_categories, delete_category
 
 
 def config_subparser_list(subparsers):
