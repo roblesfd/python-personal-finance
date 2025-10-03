@@ -44,7 +44,17 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.base_cli.config_parsers">
 <span class="sig-prename descclassname"><span class="pre">cli.base_cli.</span></span><span class="sig-name descname"><span class="pre">config_parsers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.base_cli.config_parsers" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura objetos de parser y subparser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Contenedor para especificaciones de argumento
+SubParsersAction: Para configurar subcomandos</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>AgumentParser</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-cli.categories_cli">
@@ -52,32 +62,68 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.config_subparser_delete">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.config_subparser_delete" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando deletecat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para delete categories</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.config_subparser_display">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.config_subparser_display" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando displaycat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para display categories</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.config_subparser_list">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.config_subparser_list" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando listcat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comandos para list categories</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.handle_delete">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">handle_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.handle_delete" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando deletecat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.handle_display">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">handle_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.handle_display" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando displaycat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.categories_cli.handle_list">
 <span class="sig-prename descclassname"><span class="pre">cli.categories_cli.</span></span><span class="sig-name descname"><span class="pre">handle_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.categories_cli.handle_list" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando listcat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-cli.transactions_cli">
@@ -85,42 +131,90 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.config_subparser_add">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.config_subparser_add" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando add (transaction) con sus argumentos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para add transaction</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.config_subparser_export">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.config_subparser_export" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando export (transactions) con sus argumentos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para report transaction</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.config_subparser_list">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.config_subparser_list" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando list (transactions)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para list transactions</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.config_subparser_report">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">config_subparser_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subparsers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.config_subparser_report" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configura el subparser para comando report (transactions) con sus argumentos</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subparsers</strong> (<em>SubParsersAction</em>) – Configura comando para report transactions</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.handle_add">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">handle_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.handle_add" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando add</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.handle_export">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">handle_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.handle_export" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando export</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.handle_list">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">handle_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.handle_list" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.transactions_cli.handle_report">
 <span class="sig-prename descclassname"><span class="pre">cli.transactions_cli.</span></span><span class="sig-name descname"><span class="pre">handle_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cli.transactions_cli.handle_report" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Handler para comando report</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Lista de argumentos de CLI</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-cli">

@@ -39,12 +39,37 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="storage.load_data">
 <span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#storage.load_data" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Carga datos desde un archivo JSON ubicado en el directorio estático.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Nombre del archivo JSON a cargar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Datos cargados del archivo JSON. Si el archivo no existe,
+retorna una lista vacía.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list | dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="storage.save_data">
 <span class="sig-prename descclassname"><span class="pre">storage.</span></span><span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#storage.save_data" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Guarda datos en un archivo JSON en el directorio estático.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em><em> | </em><em>dict</em>) – Estructura de datos a guardar (ej. lista o diccionario).</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Nombre del archivo JSON de destino.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

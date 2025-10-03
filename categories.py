@@ -1,15 +1,17 @@
 from storage import load_data, save_data
 
-from logger import log_call
+from logger import log_call, log_error, log_time
 from tabulate import tabulate
 
 
 @log_call
+@log_error
+@log_time
 def add_category(category: str) -> list[dict]:
     """Añade una categoria
 
     Args:
-        category (str): NOmbre de categoria
+        category (str): Nombre de categoria
 
     Returns:
         list[dict]: Lista de dict actualizada de categorias
@@ -29,6 +31,8 @@ def add_category(category: str) -> list[dict]:
 
 
 @log_call
+@log_error
+@log_time
 def display_categories(categories: list[dict]):
     """Muestra todas las categorias en una tabla
 
@@ -46,6 +50,8 @@ def display_categories(categories: list[dict]):
 
 
 @log_call
+@log_error
+@log_time
 def get_categories() -> list[dict]:
     """Obtiene un list con todas la categorias
 
@@ -60,6 +66,8 @@ def get_categories() -> list[dict]:
 
 
 @log_call
+@log_error
+@log_time
 def delete_category(nombre: str) -> list[dict]:
     """Elimina una categoria
 

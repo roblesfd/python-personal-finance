@@ -3,10 +3,12 @@ from datetime import datetime
 from tabulate import tabulate
 
 from models import Movimiento
-from logger import log_call
+from logger import log_call, log_error, log_time
 from categories import add_category
 
 @log_call
+@log_error
+@log_time
 def add_transaction(transaction):
     """Añade una transacción nueva
 
@@ -23,6 +25,8 @@ def add_transaction(transaction):
 
 
 @log_call
+@log_error
+@log_time
 def display_transactions(transactions):
     """ Muestra todas las transacciones existentes en una tabla
 
@@ -39,6 +43,8 @@ def display_transactions(transactions):
 
 
 @log_call
+@log_error
+@log_time
 def get_transactions():
     """Obtiene todas las transacciones guardadas
 
@@ -53,6 +59,8 @@ def get_transactions():
 
 
 @log_call
+@log_error
+@log_time
 def calculate_balance(transactions):
     """Calcula el balance
 
@@ -73,6 +81,8 @@ def calculate_balance(transactions):
 
 
 @log_call
+@log_error
+@log_time
 def filter_by_category(transactions, category):
     """Filtra categorias por campo 'category'
 
@@ -87,6 +97,8 @@ def filter_by_category(transactions, category):
 
 
 @log_call
+@log_error
+@log_time
 def filter_by_type(transactions, type):
     """Filtra categorias por campo 'type'
 
@@ -101,6 +113,8 @@ def filter_by_type(transactions, type):
 
 
 @log_call
+@log_error
+@log_time
 def filter_by_date(transactions, start_date, end_date):
     """Filtra fechas por fecha inicial y fecha final
 

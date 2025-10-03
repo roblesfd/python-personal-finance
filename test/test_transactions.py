@@ -36,6 +36,7 @@ def test_display_transactions():
         
         assert mock_print.call_count == 1
 
+
 def test_get_transactions_with_data():
     fake_data = [{"tipo": "ingreso", "monto": 100}]
 

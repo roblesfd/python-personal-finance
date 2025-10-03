@@ -44,37 +44,116 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.add_transaction">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">add_transaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.add_transaction" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Añade una transacción nueva</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transaction</strong> (<em>_type_</em>) – _description_</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.calculate_balance">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">calculate_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.calculate_balance" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Calcula el balance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transactions</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – Lista de dicts de transacciones</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Balance total de transacciones</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.display_transactions">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">display_transactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.display_transactions" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Muestra todas las transacciones existentes en una tabla</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>transactions</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – Lista de dict transacciones a mostrar</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.filter_by_category">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">filter_by_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.filter_by_category" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filtra categorias por campo “category”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transactions</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – Lista de dicts de transacciones</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Categoria a filtrar</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lista de dicts de transacciones filtradas</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.filter_by_date">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">filter_by_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.filter_by_date" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filtra fechas por fecha inicial y fecha final</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transactions</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – Lista de dicts de transacciones</p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – Fecha de inicio</p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – Fecha de fin</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lista de dicts de transacciones filtradas</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.filter_by_type">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">filter_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.filter_by_type" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filtra categorias por campo “type”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transactions</strong> (<em>list</em><em>[</em><em>dict</em><em>]</em>) – Lista de dicts de transacciones</p></li>
+<li><p><strong>type</strong> (<em>str</em>) – Tipo a filtrar</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lista de dicts de transacciones filtradas</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="transaction.transactions.get_transactions">
 <span class="sig-prename descclassname"><span class="pre">transaction.transactions.</span></span><span class="sig-name descname"><span class="pre">get_transactions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transactions.get_transactions" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Obtiene todas las transacciones guardadas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Lista de dicts de transacciones</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[dict]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-transaction">
