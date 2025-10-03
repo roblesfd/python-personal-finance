@@ -1,0 +1,15 @@
+Módulo export_csv
+==================
+
+.. automodule:: export.export_csv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Módulo export_pdf
+==================
+
+.. automodule:: export.export_pdf
+   :members:
+   :undoc-members:
+   :show-inheritance:

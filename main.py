@@ -1,6 +1,10 @@
 from cli import transactions_cli, categories_cli, base_cli
 
+        
+
 def main():
+    """Función principal para ejecutar el programa
+    """
     parser, subparsers = base_cli.config_parsers()
 
     # trasanction subparsers

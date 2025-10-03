@@ -5,7 +5,15 @@ from tabulate import tabulate
 
 
 @log_call
-def add_category(category):
+def add_category(category: str) -> list[dict]:
+    """Añade una categoria
+
+    Args:
+        category (str): NOmbre de categoria
+
+    Returns:
+        list[dict]: Lista de dict actualizada de categorias
+    """
     categories = load_data("categories.json")
     if not categories:
         print("📭 No hay categorias registradas.")
@@ -21,7 +29,13 @@ def add_category(category):
 
 
 @log_call
-def display_categories(categories):
+def display_categories(categories: list[dict]):
+    """Muestra todas las categorias en una tabla
+
+    Args:
+        categories (list[dict]): Lista de dict de categorias
+    """
+
     table = [
         [i + 1, t["nombre"]]
         for i, t in enumerate(categories)
@@ -32,7 +46,12 @@ def display_categories(categories):
 
 
 @log_call
-def get_categories():
+def get_categories() -> list[dict]:
+    """Obtiene un list con todas la categorias
+
+    Returns:
+        list[dict]: Lista de dict de categorias
+    """
     categories = load_data("categories.json")
     if not categories:
         print("📭 No hay categorias registradas.")
@@ -41,7 +60,15 @@ def get_categories():
 
 
 @log_call
-def delete_category(nombre):
+def delete_category(nombre: str) -> list[dict]:
+    """Elimina una categoria
+
+    Args:
+        nombre (str): Nombre de la categoría
+
+    Returns:
+        list[dict]: Lista actualizada de categorias
+    """
     categories = load_data("categories.json")
 
     if not categories:
