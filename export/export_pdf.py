@@ -6,7 +6,7 @@ col_widths = [10, 55, 20, 20, 35, 50]
 pdf = FPDF()
 DIR_PATH = "static/"
 
-def export_to_pdf(transactions: list[dict], filename="reporte_movimientos.pdf"):
+def export_to_pdf(transactions: list[dict], filename="reporte_movimientos.pdf") -> None:
     """Exporta la lista de transacciones a un archivo pdf
 
     Args:
@@ -42,6 +42,7 @@ def set_headers() -> list[str] :
     Returns:
         list[str]: Lista de headers para la tabla
     """
+
     headers = ["No.", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
     set_default_font()
 
@@ -52,12 +53,13 @@ def set_headers() -> list[str] :
     return headers
 
 
-def set_table_content(transactions: list[dict]):
+def set_table_content(transactions: list[dict])  -> None:
     """Define el contenido (transactions) de la tabla con filas y columnas 
 
     Args:
         transactions (list[dict]): Lista de transacciones a mostrar
     """
+
     set_default_font()    
     # filas
     for i, t in enumerate(transactions):
@@ -75,7 +77,7 @@ def set_table_content(transactions: list[dict]):
         pdf.ln()
 
 
-def set_default_font(style="Arial", weight="", size=11):
+def set_default_font(style="Arial", weight="", size=11) -> None:
     """Define opciones de fuente predeterminada para la tabla
 
     Args:
@@ -83,4 +85,5 @@ def set_default_font(style="Arial", weight="", size=11):
         weight (str, optional): Peso de la fuente. Defaults to "".
         size (int, optional): Tamaño de la fuente. Defaults to 11.
     """
+    
     pdf.set_font(style, weight, size)

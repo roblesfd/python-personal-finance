@@ -1,6 +1,7 @@
 import logging
 from functools import wraps
 import time
+from typing import List, Any, Callable
 
 logging.basicConfig(
     filename="app.log",
@@ -11,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def truncate(args, max_items=4):
+def truncate(args: List[Any], max_items=4) -> List[Any]:
     """Trunca listas/dicts grandes para mostrar solo los primeros `max_items`."""
     if isinstance(args, list):
         if len(args) > max_items:
@@ -20,7 +21,7 @@ def truncate(args, max_items=4):
     return args
 
 
-def log_call(func):
+def log_call(func: Callable[..., Any]) -> Callable[..., Any]:
     """Decorador para registrar llamadas a funciones en un archivo de log.
 
     Args:
@@ -40,7 +41,7 @@ def log_call(func):
     return wrapper
 
 
-def log_error(func):
+def log_error(func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(func)
     def wrapper(*args, **kwargs):
         try:
@@ -51,7 +52,7 @@ def log_error(func):
     return wrapper
 
 
-def log_time(func):
+def log_time(func: Callable[..., Any]) -> Callable[..., Any]:
     """Logger de rendimiento, mide el tiempo de ejecución de funciones
 
     Args:

@@ -1,3 +1,4 @@
+from typing import List, Optional
 
 from utils.logger import log_call, log_error, log_time
 from tabulate import tabulate
@@ -7,7 +8,7 @@ from db.storage import load_data, save_data
 @log_call
 @log_error
 @log_time
-def add_category(category: str) -> list[dict]:
+def add_category(category: str) -> Optional[List[dict]]:
     """Añade una categoria
 
     Args:
@@ -16,6 +17,7 @@ def add_category(category: str) -> list[dict]:
     Returns:
         list[dict]: Lista de dict actualizada de categorias
     """
+
     categories = load_data("categories.json")
     if not categories:
         print("📭 No hay categorias registradas.")
@@ -33,7 +35,7 @@ def add_category(category: str) -> list[dict]:
 @log_call
 @log_error
 @log_time
-def display_categories(categories: list[dict]):
+def display_categories(categories: List[dict]) -> None:
     """Muestra todas las categorias en una tabla
 
     Args:
@@ -52,12 +54,13 @@ def display_categories(categories: list[dict]):
 @log_call
 @log_error
 @log_time
-def get_categories() -> list[dict]:
+def get_categories() -> Optional[List[dict]]:
     """Obtiene un list con todas la categorias
 
     Returns:
         list[dict]: Lista de dict de categorias
     """
+
     categories = load_data("categories.json")
     if not categories:
         print("📭 No hay categorias registradas.")
@@ -68,7 +71,7 @@ def get_categories() -> list[dict]:
 @log_call
 @log_error
 @log_time
-def delete_category(nombre: str) -> list[dict]:
+def delete_category(nombre: str) -> Optional[List[dict]]:
     """Elimina una categoria
 
     Args:
@@ -77,6 +80,7 @@ def delete_category(nombre: str) -> list[dict]:
     Returns:
         list[dict]: Lista actualizada de categorias
     """
+    
     categories = load_data("categories.json")
 
     if not categories:

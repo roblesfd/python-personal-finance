@@ -7,7 +7,7 @@ def main():
     """
     parser, subparsers = base_cli.config_parsers()
 
-    # trasanction subparsers
+    # transaction subparsers
     transactions_cli.config_subparser_add(subparsers)
     transactions_cli.config_subparser_list(subparsers)
     transactions_cli.config_subparser_report(subparsers)

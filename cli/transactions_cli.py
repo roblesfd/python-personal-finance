@@ -1,5 +1,6 @@
 from datetime import datetime
 from functools import reduce
+from pprint import pprint
 
 from model.models import Movimiento
 from repositories.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_date, filter_by_type 
@@ -49,9 +50,9 @@ def config_subparser_export(subparsers):
     """Configura el subparser para comando export (transactions) con sus argumentos
 
     Args:
-        subparsers (SubParsersAction): Configura comando para report transaction
+        subparsers (SubParsersAction): Configura comando para export transaction
     """
-    export_parser = subparsers.add_parser("export", help="Muestra un reporte de todas las transacciones")
+    export_parser = subparsers.add_parser("export", help="Genera un archivo de reporte de todas las transacciones (csv, pdf)")
     export_parser.add_argument("format", type=str, choices=["csv", "pdf"], help="Tipo de formato a exportar")
 
 
@@ -78,7 +79,7 @@ def handle_list(args):
         args (list[str]): Lista de argumentos de CLI 
     """
     transactions = get_transactions()
-    display_transactions(transactions)
+    pprint(transactions)
 
 
 def handle_report(args):
@@ -91,6 +92,8 @@ def handle_report(args):
     start_date = datetime.strptime(args.desde, "%Y-%m-%d") if args.desde else datetime.min
     end_date = datetime.strptime(args.hasta, "%Y-%m-%d") if args.hasta else datetime.max
 
+    print(type(start_date))
+
     filters = [
         (lambda tx: filter_by_category(tx, args.categoria)) if args.categoria else None,
         (lambda tx: filter_by_type(tx, args.tipo)) if args.tipo else None,
@@ -98,7 +101,6 @@ def handle_report(args):
     ]
 
     transactions = reduce(lambda acc, f: f(acc) if f else acc, filters, get_transactions())
-
     
     balance = calculate_balance(transactions)
     print("Reporte de movimientos")
