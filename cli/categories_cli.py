@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from repositories.categories import add_category, display_categories, get_categories, delete_category
 
 
 def config_subparser_list(subparsers):
@@ -30,32 +29,3 @@ def config_subparser_delete(subparsers):
     delete_subparser = subparsers.add_parser("deletecat", help="Elimina una categoría")
     delete_subparser.add_argument("category", type=str, help="Nombre de la categoría")
     
-
-def handle_list(args):
-    """Handler para comando listcat
-
-    Args:
-        args (list[str]): Lista de argumentos de CLI 
-    """
-    categories = get_categories()
-    return categories
-
-
-def handle_display(args):
-    """Handler para comando displaycat
-
-    Args:
-        args (list[str]): Lista de argumentos de CLI 
-    """
-    categories = get_categories()
-    display_categories(categories)
-
-
-def handle_delete(args):
-    """Handler para comando deletecat
-
-    Args:
-        args (list[str]): Lista de argumentos de CLI 
-    """
-    updated_categories = delete_category(args.category)
-    return updated_categories

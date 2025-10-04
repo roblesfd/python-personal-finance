@@ -1,6 +1,6 @@
 from cli import transactions_cli, categories_cli, base_cli
+from handlers import transactions, categories
 
-        
 
 def main():
     """Función principal para ejecutar el programa
@@ -21,13 +21,13 @@ def main():
     args = parser.parse_args()
 
     commands = {
-        "add": transactions_cli.handle_add,
-        "list": transactions_cli.handle_list,
-        "report": transactions_cli.handle_report,
-        "export": transactions_cli.handle_export,
-        "listcat": categories_cli.handle_list,
-        "displaycat": categories_cli.handle_display,
-        "deletecat": categories_cli.handle_delete,
+        "add": transactions.handle_add,
+        "list": transactions.handle_list,
+        "report": transactions.handle_report,
+        "export": transactions.handle_export,
+        "listcat": categories.handle_list,
+        "displaycat": categories.handle_display,
+        "deletecat": categories.handle_delete,
     }
 
     if args.command in commands:
