@@ -26,17 +26,17 @@ def config_subparser_list(subparsers):
     subparsers.add_parser("list", help="Listar todos los movimientos")
 
 
-def config_subparser_report(subparsers):
-    """Configura el subparser para comando report (transactions) con sus argumentos
+def config_subparser_display(subparsers):
+    """Configura el subparser para comando display (transactions) con sus argumentos
 
     Args:
-        subparsers (SubParsersAction): Configura comando para report transactions
+        subparsers (SubParsersAction): Configura comando para display transactions
     """
-    report_parser = subparsers.add_parser("report", help="Mostrar reportes")
-    report_parser.add_argument("-c", "--categoria", type=str, help="Filtrar por categoría")
-    report_parser.add_argument("-t", "--tipo", type=str, help="Filtrar por tipo")
-    report_parser.add_argument("-start", "--desde", type=str, default="", help="Fecha inicio (AAAA-MM-DD)")
-    report_parser.add_argument("-end", "--hasta", type=str, default="", help="Fecha fin (AAAA-MM-DD)")
+    display_parser = subparsers.add_parser("display", help="Mostrar movimientos en una tabla")
+    display_parser.add_argument("-c", "--categoria", type=str, help="Filtrar por categoría")
+    display_parser.add_argument("-t", "--tipo", type=str, help="Filtrar por tipo")
+    display_parser.add_argument("-start", "--desde", type=str, default="", help="Fecha inicio (AAAA-MM-DD)")
+    display_parser.add_argument("-end", "--hasta", type=str, default="", help="Fecha fin (AAAA-MM-DD)")
 
 
 def config_subparser_export(subparsers):
@@ -49,3 +49,12 @@ def config_subparser_export(subparsers):
     export_parser.add_argument("format", type=str, choices=["csv", "pdf"], help="Tipo de formato a exportar")
 
 
+def config_subparser_delete(subparsers):
+    """Configura el subparser para comando delete (transaction)
+
+    Args:
+        subparsers (SubParsersAction): Configura comando para delete
+    """
+    delete_subparser = subparsers.add_parser("delete", help="Elimina un movimiento")
+    delete_subparser.add_argument("id", type=int, help="ID del movimiento")
+    

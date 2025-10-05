@@ -1,21 +1,24 @@
 from cli import transactions_cli, categories_cli, base_cli
 from handlers.categories import CategoryHandler
 from handlers.transactions import TransactionHandler
-from repositories.json_category_repo import JsonCategoryRepository 
-from repositories.json_transaction_repo import JsonTransactionRepository
+# from repositories.json_category_repo import JsonCategoryRepository 
+# from repositories.json_transaction_repo import JsonTransactionRepository 
+from repositories.sqlite_transaction_repo import SQLiteTransactionRepository
+from repositories.sqlite_category_repo import SqliteCategoryRepository
 
 def main():
     """Función principal para ejecutar el programa
     """
     parser, subparsers = base_cli.config_parsers()
-    category_handler = CategoryHandler(JsonCategoryRepository())
-    transaction_handler = TransactionHandler(JsonTransactionRepository())
+    category_handler = CategoryHandler(SqliteCategoryRepository())
+    transaction_handler = TransactionHandler(SQLiteTransactionRepository())
 
     # transaction subparsers
     transactions_cli.config_subparser_add(subparsers)
     transactions_cli.config_subparser_list(subparsers)
-    transactions_cli.config_subparser_report(subparsers)
+    transactions_cli.config_subparser_display(subparsers)
     transactions_cli.config_subparser_export(subparsers)
+    transactions_cli.config_subparser_delete(subparsers)
 
     # category subparsers
     categories_cli.config_subparser_list(subparsers)
@@ -27,8 +30,9 @@ def main():
     commands = {
         "add": transaction_handler.handle_add,
         "list": transaction_handler.handle_list,
-        "report": transaction_handler.handle_report,
+        "display": transaction_handler.handle_display,
         "export": transaction_handler.handle_export,
+        "delete": transaction_handler.handle_delete,
         "listcat": category_handler.handle_list,
         "displaycat": category_handler.handle_display,
         "deletecat": category_handler.handle_delete,

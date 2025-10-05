@@ -46,7 +46,7 @@ class JsonTransactionRepository(BaseTransactionRepository):
     @log_call
     @log_error
     @log_time
-    def delete(self, nombre: str) -> List[Dict]:
+    def delete(self, id: int) -> List[Dict]:
         pass
 
 
@@ -67,29 +67,6 @@ class JsonTransactionRepository(BaseTransactionRepository):
         headers = ["No.", "Fecha", "Tipo", "Monto", "Categoría", "Descripción"]
 
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
-
-
-    @log_call
-    @log_error
-    @log_time
-    def calculate_balance(self, transactions: List[Dict[str, Any]]) -> None:
-        """Calcula el balance
-
-        Args:
-            transactions (List[Dict[str, Any]]): Lista de dicts de transacciones
-
-        Returns:
-            float: Balance total de transacciones
-        """
-
-        balance = 0
-
-        for t in transactions:
-            if t["tipo"] == "ingreso":
-                balance += t["monto"]
-            elif t["tipo"] == "gasto":
-                balance -= t["monto"]
-        return balance
 
 
     @log_call

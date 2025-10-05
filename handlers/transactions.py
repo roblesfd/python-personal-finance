@@ -40,8 +40,8 @@ class TransactionHandler:
         pprint(transactions)
 
 
-    def handle_report(self, args):
-        """Handler para comando report
+    def handle_display(self, args):
+        """Handler para comando display
 
         Args:
             args (list[str]): Lista de argumentos de CLI 
@@ -76,4 +76,15 @@ class TransactionHandler:
         elif args.format == "pdf":
             export_to_pdf(transactions, "movimientos.pdf")
 
+
+    def handle_delete(self, args):
+        """Handler para comando delete
+
+        Args:
+            args (list[str]): Lista de argumentos de CLI 
+        """
+        updated_transactions = self.repo.delete(args.id)
+        print(f"Se ha eliminado el movimiento con ID: '{args.id}' ")
+        return updated_transactions
+    
 
