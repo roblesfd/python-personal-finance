@@ -1,9 +1,8 @@
-from repositories.categories import add_category, display_categories, get_categories, delete_category
-from repositories.base_category_repo import CategoryRepository
+from repositories.base_category_repo import BaseCategoryRepository
 
 class CategoryHandler:
 
-    def __init__(self, repo: CategoryRepository):
+    def __init__(self, repo: BaseCategoryRepository):
         self.repo = repo
 
 

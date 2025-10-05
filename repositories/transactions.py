@@ -2,7 +2,6 @@ from datetime import datetime
 from tabulate import tabulate
 from typing import List, Dict, Any
 
-from model.models import Movimiento
 from utils.logger import log_call, log_error, log_time
 from repositories.categories import add_category
 from db.storage import load_data, save_data

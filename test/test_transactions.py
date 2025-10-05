@@ -1,95 +1,71 @@
 import pytest
+from unittest.mock import patch, MagicMock
+from datetime import datetime
+from repositories.json_transaction_repo import JsonTransactionRepository
 
-from unittest.mock import patch 
-from datetime import datetime, timedelta
+@pytest.fixture
+def repo():
+    return JsonTransactionRepository()
 
-from repositories.transactions import add_transaction, display_transactions, get_transactions, calculate_balance, filter_by_category, filter_by_type, filter_by_date
-
-
-def test_add_transaction():
-    fake_transaction = {
-        "fecha": "2025-09-25T12:00:00",
-        "tipo": "ingreso",
-        "monto": 100,
-        "categoria": "sueldo",
-        "descripcion": "Pago mensual"
-    }
-
-    with patch("repositories.transactions.get_transactions", return_value=[]), \
-        patch("repositories.transactions.save_data") as mock_save, \
-        patch("builtins.print") as mock_print:
-
-        add_transaction(fake_transaction)
-
-        mock_save.assert_called_once_with([fake_transaction], 'data.json')
-        mock_print.assert_any_call("✅ Movimiento registrado correctamente.", fake_transaction)
-
-
-def test_display_transactions():
-    fake_transactions = [
-        {"fecha": "2025-09-25", "tipo": "ingreso", "monto": 100, "categoria": "sueldo", "descripcion": "Pago"},
-        {"fecha": "2025-09-26", "tipo": "gasto", "monto": 50, "categoria": "comida", "descripcion": "Cena"},
+@pytest.fixture
+def sample_transactions():
+    return [
+        {
+            "fecha": "2025-10-01T12:00:00",
+            "tipo": "ingreso",
+            "monto": 1000,
+            "categoria": "ventas",
+            "descripcion": "venta producto"
+        },
+        {
+            "fecha": "2025-10-02T10:00:00",
+            "tipo": "gasto",
+            "monto": 200,
+            "categoria": "compras",
+            "descripcion": "compra insumo"
+        }
     ]
 
-    with patch("builtins.print") as mock_print:
-        display_transactions(fake_transactions)
-        
-        assert mock_print.call_count == 1
+# ---------- TESTS ----------
 
+@patch("repositories.json_transaction_repo.load_data")
+def test_get_all_returns_transactions(mock_load, repo, sample_transactions):
+    mock_load.return_value = sample_transactions
+    result = repo.get_all()
+    assert len(result) == 2
+    assert result[0]["tipo"] == "ingreso"
 
-def test_get_transactions_with_data():
-    fake_data = [{"tipo": "ingreso", "monto": 100}]
+@patch("repositories.json_transaction_repo.load_data")
+def test_get_all_empty_prints_message(mock_load, repo, capsys):
+    mock_load.return_value = []
+    repo.get_all()
+    captured = capsys.readouterr()
+    assert "No hay movimientos" in captured.out
 
-    with patch("repositories.transactions.load_data", return_value=fake_data):
-        result = get_transactions()
-        assert result == fake_data
+@patch("repositories.json_transaction_repo.save_data")
+@patch("repositories.json_transaction_repo.json_cat_repo")
+def test_save_calls_save_data_and_category_repo(mock_cat_repo, mock_save_data, repo, sample_transactions):
+    repo.save(sample_transactions)
+    mock_cat_repo.save.assert_called_once_with("compras")
+    mock_save_data.assert_called_once_with(sample_transactions, "data.json")
 
+def test_calculate_balance(repo, sample_transactions):
+    balance = repo.calculate_balance(sample_transactions)
+    assert balance == 800  # 1000 ingreso - 200 gasto
 
-def test_get_transactions_no_data():
-    with patch("repositories.transactions.load_data", return_value=[]), \
-         patch("builtins.print") as mock_print:
-        result = get_transactions()
-        assert result is None
-        mock_print.assert_any_call("📭 No hay movimientos registrados.")
-
-
-def test_calculate_balance():
-    fake_transactions = [
-        {"tipo": "ingreso", "monto": 100},
-        {"tipo": "gasto", "monto": 40},
-    ]
-    result = calculate_balance(fake_transactions)
-    assert result == 60
-
-
-def test_filter_by_category():
-    fake_transactions = [
-        {"categoria": "sueldo"},
-        {"categoria": "comida"},
-    ]
-    result = filter_by_category(fake_transactions, "sueldo")
+def test_filter_by_category(repo, sample_transactions):
+    result = repo.filter_by_category(sample_transactions, "ventas")
     assert len(result) == 1
-    assert result[0]["categoria"] == "sueldo"
+    assert result[0]["categoria"] == "ventas"
 
-
-def test_filter_by_type():
-    fake_transactions = [
-        {"tipo": "ingreso"},
-        {"tipo": "gasto"},
-    ]
-    result = filter_by_type(fake_transactions, "gasto")
+def test_filter_by_type(repo, sample_transactions):
+    result = repo.filter_by_type(sample_transactions, "gasto")
     assert len(result) == 1
     assert result[0]["tipo"] == "gasto"
 
-
-def test_filter_by_date():
-    today = datetime.now()
-    fake_transactions = [
-        {"fecha": (today - timedelta(days=1)).isoformat(), "tipo": "ingreso"},
-        {"fecha": (today + timedelta(days=1)).isoformat(), "tipo": "gasto"},
-    ]
-    start = today - timedelta(days=2)
-    end = today
-
-    result = filter_by_date(fake_transactions, start, end)
+def test_filter_by_date(repo, sample_transactions):
+    start = datetime(2025, 10, 1)
+    end = datetime(2025, 10, 1, 23, 59)
+    result = repo.filter_by_date(sample_transactions, start, end)
     assert len(result) == 1
+    assert result[0]["fecha"].startswith("2025-10-01")

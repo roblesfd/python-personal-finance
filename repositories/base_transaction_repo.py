@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod 
 from typing import List, Dict 
 
-class BaseCategoryRepository(ABC):
+class BaseTransactionRepository(ABC):
 
     @abstractmethod
     def get_all(self) -> List[Dict]:
         pass 
 
     @abstractmethod 
-    def save(self, categories: List[Dict]):
+    def save(self, transactions: List[Dict]):
         pass 
 
     @abstractmethod
@@ -16,7 +16,7 @@ class BaseCategoryRepository(ABC):
         pass
 
     @abstractmethod
-    def display(self, categories: List[Dict]) -> None:
+    def display(self, transactions: List[Dict]) -> None:
         pass
 
 

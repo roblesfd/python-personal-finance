@@ -2,12 +2,12 @@ import json
 from typing import List, Dict
 from tabulate import tabulate
 
-from .base_category_repo import CategoryRepository 
+from .base_category_repo import BaseCategoryRepository 
 from db.storage import load_data, save_data
 from utils.logger import log_call, log_error, log_time
 
 
-class JsonCategoryRepository(CategoryRepository):
+class JsonCategoryRepository(BaseCategoryRepository):
 
     FILE = "categories.json"
 
@@ -56,7 +56,7 @@ class JsonCategoryRepository(CategoryRepository):
         """Muestra todas las categorias en una tabla
 
         Args:
-            categories (list[dict]): Lista de dict de categorias
+            categories (List[Dict]): Lista de dict de categorias
         """
 
         table = [
