@@ -1,11 +1,13 @@
 from cli import transactions_cli, categories_cli, base_cli
-from handlers import transactions, categories
-
+from handlers.categories import CategoryHandler
+from handlers import transactions
+from repositories.json_category_repo import JsonCategoryRepository 
 
 def main():
     """Función principal para ejecutar el programa
     """
     parser, subparsers = base_cli.config_parsers()
+    category_handler = CategoryHandler(JsonCategoryRepository())
 
     # transaction subparsers
     transactions_cli.config_subparser_add(subparsers)
@@ -25,9 +27,9 @@ def main():
         "list": transactions.handle_list,
         "report": transactions.handle_report,
         "export": transactions.handle_export,
-        "listcat": categories.handle_list,
-        "displaycat": categories.handle_display,
-        "deletecat": categories.handle_delete,
+        "listcat": category_handler.handle_list,
+        "displaycat": category_handler.handle_display,
+        "deletecat": category_handler.handle_delete,
     }
 
     if args.command in commands:
