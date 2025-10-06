@@ -1,4 +1,4 @@
-from cli import transactions_cli, categories_cli, base_cli
+from cli import transactions_cli, categories_cli, base_cli, utils_cli
 from handlers.categories import CategoryHandler
 from handlers.transactions import TransactionHandler
 # from repositories.json_category_repo import JsonCategoryRepository 
@@ -25,6 +25,9 @@ def main():
     categories_cli.config_subparser_display(subparsers)
     categories_cli.config_subparser_delete(subparsers)
 
+    utils_cli.config_subparser_open_docs(subparsers)
+
+
     args = parser.parse_args()
 
     commands = {
@@ -36,6 +39,7 @@ def main():
         "listcat": category_handler.handle_list,
         "displaycat": category_handler.handle_display,
         "deletecat": category_handler.handle_delete,
+        "opendocs": utils_cli.handle_open_docs,
     }
 
     if args.command in commands:

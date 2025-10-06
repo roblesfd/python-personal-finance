@@ -45,7 +45,7 @@ def config_subparser_export(subparsers):
     Args:
         subparsers (SubParsersAction): Configura comando para export transaction
     """
-    export_parser = subparsers.add_parser("export", help="Genera un archivo de reporte de todas las transacciones (csv, pdf)")
+    export_parser = subparsers.add_parser("export", help="Genera un archivo de reporte de todos los movimientos (csv, pdf)")
     export_parser.add_argument("format", type=str, choices=["csv", "pdf"], help="Tipo de formato a exportar")
 
 

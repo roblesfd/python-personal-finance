@@ -4,7 +4,7 @@ import time
 from typing import List, Any, Callable
 
 logging.basicConfig(
-    filename="app.log",
+    filename="static/app.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
